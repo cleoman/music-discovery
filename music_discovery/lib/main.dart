@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:music_discovery/screens/songsbyzip.dart';
 //comment
 
 void main() => runApp(new HomePage());
@@ -32,7 +33,12 @@ class _HomePageState extends State<HomePage> {
               Row(children: <Widget>[
                 Expanded(
                     child: RaisedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => TrendingSongsPage()),
+                          );
+                        },
                         child: Text('Display Top Trending Songs')))
               ]),
               Row(children: <Widget>[
