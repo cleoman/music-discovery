@@ -7,14 +7,12 @@ class TrendingSongsPage extends StatefulWidget {
 
 class _TrendingSongsState extends State<TrendingSongsPage> {
   Widget build(BuildContext build) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: Center(
             child: Text('Trending Songs Results')
           )
         )
-      )
     );
   }
 }
