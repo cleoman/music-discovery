@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 
 
 class TrendingGenrePage extends StatefulWidget {
+  final String zipCode;
+
+  TrendingGenrePage({Key key, @required this.zipCode}) : super(key: key);
+
   _TrendingGenreState createState() => _TrendingGenreState();
 }
 
@@ -12,7 +16,8 @@ class _TrendingGenreState extends State<TrendingGenrePage> {
             title: Center(
                 child: Text('Trending Genre Results')
             )
-        )
+        ),
+        body: Text(widget.zipCode),
     );
   }
 }

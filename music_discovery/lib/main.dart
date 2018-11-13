@@ -95,7 +95,7 @@ class _ChoicesPageState extends State<ChoicesPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => TrendingSongsPage()),
+                            builder: (context) => TrendingSongsPage(zipCode: widget.zipCode)),
                       );
                     },
                     child: Text('Display Top Trending Songs')))
@@ -118,7 +118,7 @@ class _ChoicesPageState extends State<ChoicesPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => TrendingGenrePage()),
+                            builder: (context) => TrendingGenrePage(zipCode: widget.zipCode)),
                       );
                     },
                     child: Text('Display Top Trending Genres')))

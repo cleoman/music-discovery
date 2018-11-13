@@ -15,9 +15,10 @@ class _TrendingArtistsState extends State<TrendingArtistsPage> {
     return Scaffold(
         appBar: AppBar(
             title: Center(
-                child: Text(widget.zipCode)
-            )
-        )
+                child: Text("Trending Artists Results")
+            ),
+        ),
+      body: Text(widget.zipCode)
     );
   }
 }
