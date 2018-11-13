@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:music_discovery/screens/songsbyzip.dart';
-import 'package:music_discovery/screens/genrebyzip.dart';
 import 'package:music_discovery/screens/artistsbyzip.dart';
+import 'package:music_discovery/screens/genrebyzip.dart';
+import 'package:music_discovery/screens/songsbyzip.dart';
 //comment
 
 void main() {
@@ -28,20 +28,19 @@ class _HomePageState extends State<HomePage> {
     return new Scaffold(
         appBar: AppBar(
           title: Center(
-            child: Text('Music Discovery'),
+            child: Text('Music Discovery',
+                style: TextStyle(fontSize: 50.0, fontWeight: FontWeight.bold)),
           ),
         ),
         body: Column(children: <Widget>[
-          Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text('Enter your zipcode here'),
-              ]),
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+            Text('Enter your zipcode here'),
+          ]),
           Row(children: <Widget>[
             Expanded(
                 child: TextField(
-                  decoration: InputDecoration(hintText: 'Please enter zipcode'),
-                ))
+              decoration: InputDecoration(hintText: 'Please enter zipcode'),
+            ))
           ]),
           Row(children: <Widget>[
             Expanded(
@@ -49,7 +48,8 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => TrendingSongsPage()),
+                        MaterialPageRoute(
+                            builder: (context) => TrendingSongsPage()),
                       );
                     },
                     child: Text('Display Top Trending Songs')))
@@ -60,7 +60,8 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => TrendingArtistsPage()),
+                        MaterialPageRoute(
+                            builder: (context) => TrendingArtistsPage()),
                       );
                     },
                     child: Text('Display Top Trending Artists')))
@@ -71,7 +72,8 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => TrendingGenrePage()),
+                        MaterialPageRoute(
+                            builder: (context) => TrendingGenrePage()),
                       );
                     },
                     child: Text('Display Top Trending Genres')))
