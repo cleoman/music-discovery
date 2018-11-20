@@ -22,6 +22,7 @@ class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
+
 class _HomePageState extends State<HomePage> {
   final zipController = new TextEditingController();
   String zipCode = "";
@@ -35,7 +36,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.redAccent,
+          backgroundColor: Colors.blueAccent,
           title: Center(
             child: Text('Music Discovery',
                 style: TextStyle(
@@ -44,48 +45,49 @@ class _HomePageState extends State<HomePage> {
                 )),
           ),
         ),
+        resizeToAvoidBottomPadding: false,
         body: Column(children: <Widget>[
           Row(children: <Widget>[
             Expanded(
                 child: TextField(
-                  decoration: InputDecoration(hintText: 'Please enter zipcode'),
-                  onChanged: (text) {
-                    print("Text field: $text");
-                  },
-                  controller: zipController,
-                ))
+              decoration: InputDecoration(hintText: 'Please enter zipcode'),
+              onChanged: (text) {
+                print("Text field: $text");
+              },
+              controller: zipController,
+            ))
           ]),
           Row(children: <Widget>[
             Expanded(
                 child: RaisedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              ChoicesPage(zipCode: this.zipController.text)),
-                    );
-                  },
-                  child: Text('Submit'),
-                ))
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          ChoicesPage(zipCode: this.zipController.text)),
+                );
+              },
+              child: Text('Submit'),
+            ))
           ]),
           Row(children: <Widget>[
             Expanded(
                 child: RaisedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              ChoicesPage(zipCode: this.zipController.text)),
-                    );
-                  },
-                  child: Image.network(
-                    'https://www.thecultureconcept.com/wp-content/uploads/2016/08/Cropped-Cleft-1.jpg',
-                    fit: BoxFit.scaleDown,
-                    alignment: Alignment.topCenter,
-                  ),
-                ))
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          ChoicesPage(zipCode: this.zipController.text)),
+                );
+              },
+              child: Image.network(
+                'https://www.thecultureconcept.com/wp-content/uploads/2016/08/Cropped-Cleft-1.jpg',
+                fit: BoxFit.scaleDown,
+                alignment: Alignment.topCenter,
+              ),
+            ))
           ])
         ]));
   }
@@ -103,6 +105,7 @@ class ChoicesPage extends StatefulWidget {
 class _ChoicesPageState extends State<ChoicesPage> {
   Widget build(BuildContext context) {
     return new Scaffold(
+        resizeToAvoidBottomPadding: false,
         appBar: AppBar(
           title: Center(
             child: Text(widget.zipCode),
@@ -116,7 +119,8 @@ class _ChoicesPageState extends State<ChoicesPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => TrendingSongsPage(zipCode: widget.zipCode)),
+                            builder: (context) =>
+                                TrendingSongsPage(zipCode: widget.zipCode)),
                       );
                     },
                     child: Text('Display Top Trending Songs')))
@@ -127,7 +131,9 @@ class _ChoicesPageState extends State<ChoicesPage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => TrendingArtistsPage(zipCode: widget.zipCode)),
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                TrendingArtistsPage(zipCode: widget.zipCode)),
                       );
                     },
                     child: Text('Display Top Trending Artists')))
@@ -139,10 +145,30 @@ class _ChoicesPageState extends State<ChoicesPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => TrendingGenrePage(zipCode: widget.zipCode)),
+                            builder: (context) =>
+                                TrendingGenrePage(zipCode: widget.zipCode)),
                       );
                     },
                     child: Text('Display Top Trending Genres')))
+          ]),
+          Row(children: <Widget>[
+            Expanded(
+                child: RaisedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          TrendingGenrePage(zipCode: widget.zipCode)),
+                );
+              },
+              child: Image.network(
+                'https://www.thecultureconcept.com/wp-content/uploads/2016/08/Hands-Up-Music.jpg',
+                fit: BoxFit.cover,
+                height: 440.0,
+                alignment: Alignment.topCenter,
+              ),
+            ))
           ]),
         ]));
   }
