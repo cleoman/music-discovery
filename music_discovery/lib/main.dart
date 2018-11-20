@@ -35,38 +35,59 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.redAccent,
           title: Center(
             child: Text('Music Discovery',
-                style: TextStyle(fontSize: 50.0, fontWeight: FontWeight.bold)),
+                style: TextStyle(
+                  fontSize: 50.0,
+                  fontWeight: FontWeight.bold,
+                )),
           ),
         ),
         body: Column(children: <Widget>[
           Row(children: <Widget>[
             Expanded(
-              child: TextField(
-                decoration: InputDecoration(hintText: 'Please enter zipcode'),
-                onChanged: (text) {
-                  print("Text field: $text");
-                },
-                controller: zipController,
-              )
-            )
+                child: TextField(
+                  decoration: InputDecoration(hintText: 'Please enter zipcode'),
+                  onChanged: (text) {
+                    print("Text field: $text");
+                  },
+                  controller: zipController,
+                ))
           ]),
           Row(children: <Widget>[
             Expanded(
-              child: RaisedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ChoicesPage(zipCode: this.zipController.text)),
-                  );
-                },
-                child: Text('Submit'),
-              )
-            )
+                child: RaisedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              ChoicesPage(zipCode: this.zipController.text)),
+                    );
+                  },
+                  child: Text('Submit'),
+                ))
+          ]),
+          Row(children: <Widget>[
+            Expanded(
+                child: RaisedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              ChoicesPage(zipCode: this.zipController.text)),
+                    );
+                  },
+                  child: Image.network(
+                    'https://www.thecultureconcept.com/wp-content/uploads/2016/08/Cropped-Cleft-1.jpg',
+                    fit: BoxFit.scaleDown,
+                    alignment: Alignment.topCenter,
+                  ),
+                ))
           ])
-        ])
-    );
+        ]));
   }
 }
 
