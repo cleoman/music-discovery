@@ -56,12 +56,12 @@ class _TrendingArtistsState extends State<TrendingArtistsPage> {
     super.initState();
     DatabaseReference ref = FirebaseDatabase.instance.reference();
     ref.child(widget.zipCode).once().then((DataSnapshot snap) {
-      data = snap.value;
-
-      query.artist1 =  data["artist1"];
-      query.artist2 =  data["artist2"];
-      query.artist3 =  data["artist3"];
-
+      this.setState(() {
+        data = snap.value;
+        query.artist1 = data["artist1"];
+        query.artist2 = data["artist2"];
+        query.artist3 = data["artist3"];
+      });
 
     });
 
