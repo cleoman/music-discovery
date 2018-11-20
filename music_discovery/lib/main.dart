@@ -107,8 +107,9 @@ class _ChoicesPageState extends State<ChoicesPage> {
     return new Scaffold(
         resizeToAvoidBottomPadding: false,
         appBar: AppBar(
+          backgroundColor: Colors.blueAccent,
           title: Center(
-            child: Text(widget.zipCode),
+            child: Text("Zipcode:" + widget.zipCode),
           ),
         ),
         body: Column(children: <Widget>[
