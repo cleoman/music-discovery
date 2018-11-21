@@ -23,14 +23,39 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
+enum MyDialogAction{
+  ok
+}
+
 class _HomePageState extends State<HomePage> {
   final zipController = new TextEditingController();
   String zipCode = "";
+  //used for constraint on zipcode length
+  int inputLength = 0;
 
   @override
   void dispose() {
     zipController.dispose();
     super.dispose();
+  }
+
+  //two methods for a pop up alert if it is < 5 digits
+  void dialogResult(MyDialogAction value){
+    Navigator.pop(context);
+  }
+  void _showAlert(String value){
+    if(value.length == 5){
+      return;
+    }
+    AlertDialog dialog = new AlertDialog(
+      content: new Text("Enter a 5 digit zipcode"),
+      actions: <Widget>[
+        new FlatButton(onPressed: (){dialogResult(MyDialogAction.ok);},
+        child: new Text("OK"))
+      ],
+    );
+    
+    showDialog(context: context, builder: (BuildContext context)=>dialog);
   }
 
   Widget build(BuildContext context) {
@@ -50,9 +75,12 @@ class _HomePageState extends State<HomePage> {
           Row(children: <Widget>[
             Expanded(
                 child: TextField(
+                  maxLength: 5, //has a max of 5, so the user does not exceed it
               decoration: InputDecoration(hintText: 'Please enter zipcode'),
               onChanged: (text) {
-                print("Text field: $text");
+                    inputLength = text.length;//records the input length
+                    print("Text field: $text");
+
               },
               controller: zipController,
             ))
@@ -61,12 +89,17 @@ class _HomePageState extends State<HomePage> {
             Expanded(
                 child: RaisedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          ChoicesPage(zipCode: this.zipController.text)),
-                );
+                if(inputLength < 5){//if it is not a 5 digit zipcode
+                  _showAlert(zipCode);
+                }
+                else if (inputLength == 5){//if it is valid, continues
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            ChoicesPage(zipCode: this.zipController.text)),
+                  );
+                }
               },
               child: Text('Submit'),
             ))
