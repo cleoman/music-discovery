@@ -11,7 +11,6 @@ class _Data {
       this.genre3, this.song1, this.song2, this.song3, this.zipcode);
 }
 
-
 class TrendingSongsPage extends StatefulWidget {
   final String zipCode;
 
@@ -46,4 +45,21 @@ class _TrendingSongsState extends State<TrendingSongsPage> {
         )//Text(widget.zipCode),
     );
   }
+
+  @override
+  void initState() {
+    super.initState();
+    DatabaseReference ref = FirebaseDatabase.instance.reference();
+    ref.child(widget.zipCode).once().then((DataSnapshot snap) {
+      this.setState(() {
+        data = snap.value;
+        query.song1 = data["song1"];
+        query.song2 = data["song2"];
+        query.song3 = data["song3"];
+      });
+
+    });
+
+  }
+
 }

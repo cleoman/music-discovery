@@ -11,7 +11,6 @@ class _Data {
       this.genre3, this.song1, this.song2, this.song3, this.zipcode);
   }
 
-
 class TrendingArtistsPage extends StatefulWidget {
   final String zipCode;
 
@@ -20,18 +19,9 @@ class TrendingArtistsPage extends StatefulWidget {
   _TrendingArtistsState createState() => _TrendingArtistsState();
 
   }
+
   class _TrendingArtistsState extends State<TrendingArtistsPage> {
-    _Data query = new _Data(
-        '1',
-        '2',
-        '3',
-        '4',
-        '5',
-        '6',
-        '7',
-        '8',
-        '9',
-        '10');
+    _Data query = new _Data('1','2','3','4','5','6','7','8','9','10');
     var data;
 
     Widget build(BuildContext build) {
@@ -73,6 +63,8 @@ class TrendingArtistsPage extends StatefulWidget {
 
       // ignore: expected_token
     }
+
+
 
   }
 

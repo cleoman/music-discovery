@@ -11,8 +11,6 @@ class _Data {
       this.genre3, this.song1, this.song2, this.song3, this.zipcode);
 }
 
-
-
 class TrendingGenrePage extends StatefulWidget {
   final String zipCode;
 
@@ -20,7 +18,6 @@ class TrendingGenrePage extends StatefulWidget {
 
   _TrendingGenreState createState() => _TrendingGenreState();
 }
-
 
 class _TrendingGenreState extends State<TrendingGenrePage> {
   _Data query = new _Data('1','2','3','4','5','6','7','8','9','10');
@@ -56,9 +53,9 @@ class _TrendingGenreState extends State<TrendingGenrePage> {
     ref.child(widget.zipCode).once().then((DataSnapshot snap) {
       this.setState(() {
         data = snap.value;
-        query.artist1 = data["artist1"];
-        query.artist2 = data["artist2"];
-        query.artist3 = data["artist3"];
+        query.genre1 = data["genre1"];
+        query.genre2 = data["genre2"];
+        query.genre3 = data["genre3"];
       });
 
     });
