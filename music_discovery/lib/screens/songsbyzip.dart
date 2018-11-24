@@ -20,7 +20,7 @@ class TrendingSongsPage extends StatefulWidget {
 }
 
 class _TrendingSongsState extends State<TrendingSongsPage> {
-  _Data query = new _Data('1','2','3','4','5','6','','','','10');
+  _Data query = new _Data('1','2','3','4','5','6',' ',' ',' ','10');
   var data;
 
   Widget build(BuildContext build) {
