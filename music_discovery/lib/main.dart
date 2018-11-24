@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         resizeToAvoidBottomPadding: false,
-        body: Column(children: <Widget>[
+        body: ListView(children: <Widget>[
           Row(children: <Widget>[
             Expanded(
                 child: TextField(
@@ -106,21 +106,12 @@ class _HomePageState extends State<HomePage> {
           ]),
           Row(children: <Widget>[
             Expanded(
-                child: RaisedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          ChoicesPage(zipCode: this.zipController.text)),
-                );
-              },
               child: Image.network(
                 'https://www.thecultureconcept.com/wp-content/uploads/2016/08/Cropped-Cleft-1.jpg',
                 fit: BoxFit.scaleDown,
                 alignment: Alignment.topCenter,
               ),
-            ))
+            )
           ])
         ]));
   }
@@ -145,7 +136,7 @@ class _ChoicesPageState extends State<ChoicesPage> {
             child: Text("Zipcode:" + widget.zipCode),
           ),
         ),
-        body: Column(children: <Widget>[
+        body: ListView(children: <Widget>[
           Row(children: <Widget>[
             Expanded(
                 child: RaisedButton(
@@ -187,22 +178,13 @@ class _ChoicesPageState extends State<ChoicesPage> {
           ]),
           Row(children: <Widget>[
             Expanded(
-                child: RaisedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          TrendingGenrePage(zipCode: widget.zipCode)),
-                );
-              },
               child: Image.network(
                 'https://www.thecultureconcept.com/wp-content/uploads/2016/08/Hands-Up-Music.jpg',
                 fit: BoxFit.cover,
                 height: 440.0,
                 alignment: Alignment.topCenter,
               ),
-            ))
+            )
           ]),
         ]));
   }
