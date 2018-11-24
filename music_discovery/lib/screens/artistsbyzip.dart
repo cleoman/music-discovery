@@ -24,7 +24,7 @@ class TrendingArtistsPage extends StatefulWidget {
 }
 
 class _TrendingArtistsState extends State<TrendingArtistsPage> {
-  _Data query = new _Data('1','2','3','4','5','6','7','8','9','10');
+  _Data query = new _Data('','','','4','5','6','7','8','9','10');
   var data;
 
   Widget build(BuildContext build) {
@@ -58,9 +58,15 @@ class _TrendingArtistsState extends State<TrendingArtistsPage> {
     ref.child(widget.zipCode).once().then((DataSnapshot snap) {
       this.setState(() {
         data = snap.value;
-        query.artist1 = data["artist1"];
-        query.artist2 = data["artist2"];
-        query.artist3 = data["artist3"];
+        if(data == null){
+          query.artist1 = "zipcode not found in database";
+        }
+        else{
+          query.artist1 = data["artist1"];
+          query.artist2 = data["artist2"];
+          query.artist3 = data["artist3"];
+        }
+
       });
 
     });

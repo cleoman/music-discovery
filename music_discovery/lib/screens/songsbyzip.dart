@@ -20,7 +20,7 @@ class TrendingSongsPage extends StatefulWidget {
 }
 
 class _TrendingSongsState extends State<TrendingSongsPage> {
-  _Data query = new _Data('1','2','3','4','5','6','7','8','9','10');
+  _Data query = new _Data('1','2','3','4','5','6','','','','10');
   var data;
 
   Widget build(BuildContext build) {
@@ -53,9 +53,14 @@ class _TrendingSongsState extends State<TrendingSongsPage> {
     ref.child(widget.zipCode).once().then((DataSnapshot snap) {
       this.setState(() {
         data = snap.value;
-        query.song1 = data["song1"];
-        query.song2 = data["song2"];
-        query.song3 = data["song3"];
+        if(data == null){
+          query.song1 = "zipcode not found in database";
+        }
+        else {
+          query.song1 = data["song1"];
+          query.song2 = data["song2"];
+          query.song3 = data["song3"];
+        }
       });
 
     });
