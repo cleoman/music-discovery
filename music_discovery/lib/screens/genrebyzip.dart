@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/material.dart';
 
 class _Data {
   String artist1, artist2, artist3;
@@ -20,18 +20,18 @@ class TrendingGenrePage extends StatefulWidget {
 }
 
 class _TrendingGenreState extends State<TrendingGenrePage> {
-  _Data query = new _Data('1','2','3',' ',' ',' ','7','8','9','10');
+  _Data query = new _Data('1', '2', '3', ' ', ' ', ' ', '7', '8', '9', '10');
   var data;
 
   Widget build(BuildContext build) {
     return Scaffold(
         appBar: AppBar(
-            title: Center(
-                child: Text('Trending Genre Results')
-            )
-        ),
+            title: Center(child: Text('Trending Genre Results')),
+            backgroundColor: Colors.blueAccent),
         body: ListView(
           children: <Widget>[
+            Image.network(
+                'https://www.thecultureconcept.com/wp-content/uploads/2016/08/Music-1030.jpg'),
             ListTile(
               title: Text(query.genre1),
             ),
@@ -42,8 +42,8 @@ class _TrendingGenreState extends State<TrendingGenrePage> {
               title: Text(query.genre3),
             ),
           ],
-        )//Text(widget.zipCode),
-    );
+        ) //Text(widget.zipCode),
+        );
   }
 
   @override
@@ -53,18 +53,14 @@ class _TrendingGenreState extends State<TrendingGenrePage> {
     ref.child(widget.zipCode).once().then((DataSnapshot snap) {
       this.setState(() {
         data = snap.value;
-        if(data == null){
+        if (data == null) {
           query.genre1 = "zipcode not found in database";
-        }
-        else {
+        } else {
           query.genre1 = data["genre1"];
           query.genre2 = data["genre2"];
           query.genre3 = data["genre3"];
         }
       });
-
     });
-
   }
-
 }

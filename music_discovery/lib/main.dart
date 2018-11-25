@@ -23,9 +23,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-enum MyDialogAction{
-  ok
-}
+enum MyDialogAction { ok }
 
 class _HomePageState extends State<HomePage> {
   final zipController = new TextEditingController();
@@ -40,22 +38,26 @@ class _HomePageState extends State<HomePage> {
   }
 
   //two methods for a pop up alert if it is < 5 digits
-  void dialogResult(MyDialogAction value){
+  void dialogResult(MyDialogAction value) {
     Navigator.pop(context);
   }
-  void _showAlert(String value){
-    if(value.length == 5){
+
+  void _showAlert(String value) {
+    if (value.length == 5) {
       return;
     }
     AlertDialog dialog = new AlertDialog(
       content: new Text("Enter a 5 digit zipcode"),
       actions: <Widget>[
-        new FlatButton(onPressed: (){dialogResult(MyDialogAction.ok);},
-        child: new Text("OK"))
+        new FlatButton(
+            onPressed: () {
+              dialogResult(MyDialogAction.ok);
+            },
+            child: new Text("OK"))
       ],
     );
-    
-    showDialog(context: context, builder: (BuildContext context)=>dialog);
+
+    showDialog(context: context, builder: (BuildContext context) => dialog);
   }
 
   Widget build(BuildContext context) {
@@ -65,8 +67,8 @@ class _HomePageState extends State<HomePage> {
           title: Center(
             child: Text('Music Discovery',
                 style: TextStyle(
-                  fontSize: 50.0,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 45.0,
+                  fontWeight: FontWeight.w300,
                 )),
           ),
         ),
@@ -75,12 +77,11 @@ class _HomePageState extends State<HomePage> {
           Row(children: <Widget>[
             Expanded(
                 child: TextField(
-                  maxLength: 5, //has a max of 5, so the user does not exceed it
+              maxLength: 5, //has a max of 5, so the user does not exceed it
               decoration: InputDecoration(hintText: 'Please enter zipcode'),
               onChanged: (text) {
-                    inputLength = text.length;//records the input length
-                    print("Text field: $text");
-
+                inputLength = text.length; //records the input length
+                print("Text field: $text");
               },
               controller: zipController,
             ))
@@ -89,10 +90,11 @@ class _HomePageState extends State<HomePage> {
             Expanded(
                 child: RaisedButton(
               onPressed: () {
-                if(inputLength < 5){//if it is not a 5 digit zipcode
+                if (inputLength < 5) {
+                  //if it is not a 5 digit zipcode
                   _showAlert(zipCode);
-                }
-                else if (inputLength == 5){//if it is valid, continues
+                } else if (inputLength == 5) {
+                  //if it is valid, continues
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -109,6 +111,7 @@ class _HomePageState extends State<HomePage> {
               child: Image.network(
                 'https://www.thecultureconcept.com/wp-content/uploads/2016/08/Cropped-Cleft-1.jpg',
                 fit: BoxFit.scaleDown,
+                height: 490.0,
                 alignment: Alignment.topCenter,
               ),
             )
@@ -181,7 +184,7 @@ class _ChoicesPageState extends State<ChoicesPage> {
               child: Image.network(
                 'https://www.thecultureconcept.com/wp-content/uploads/2016/08/Hands-Up-Music.jpg',
                 fit: BoxFit.cover,
-                height: 440.0,
+                height: 458.0,
                 alignment: Alignment.topCenter,
               ),
             )

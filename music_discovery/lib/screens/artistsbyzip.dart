@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/material.dart';
 
 class _Data {
   String artist1, artist2, artist3;
@@ -9,10 +9,7 @@ class _Data {
 
   _Data(this.artist1, this.artist2, this.artist3, this.genre1, this.genre2,
       this.genre3, this.song1, this.song2, this.song3, this.zipcode);
-
-
 }
-
 
 class TrendingArtistsPage extends StatefulWidget {
   final String zipCode;
@@ -20,22 +17,22 @@ class TrendingArtistsPage extends StatefulWidget {
   TrendingArtistsPage({Key key, @required this.zipCode}) : super(key: key);
 
   _TrendingArtistsState createState() => _TrendingArtistsState();
-
 }
 
 class _TrendingArtistsState extends State<TrendingArtistsPage> {
-  _Data query = new _Data(' ',' ',' ','4','5','6','7','8','9','10');
+  _Data query = new _Data(' ', ' ', ' ', '4', '5', '6', '7', '8', '9', '10');
   var data;
 
   Widget build(BuildContext build) {
     return Scaffold(
         appBar: AppBar(
-          title: Center(
-              child: Text("Trending Artists Results")
-          ),
+          backgroundColor: Colors.blueAccent,
+          title: Center(child: Text("Trending Artists Results")),
         ),
         body: ListView(
           children: <Widget>[
+            Image.network(
+                'https://www.thecultureconcept.com/wp-content/uploads/2016/08/Music-1030.jpg'),
             ListTile(
               title: Text(query.artist1),
             ),
@@ -46,10 +43,9 @@ class _TrendingArtistsState extends State<TrendingArtistsPage> {
               title: Text(query.artist3),
             ),
           ],
-        )//Text(widget.zipCode),
-    );
+        ) //Text(widget.zipCode),
+        );
   }
-
 
   @override
   void initState() {
@@ -58,22 +54,14 @@ class _TrendingArtistsState extends State<TrendingArtistsPage> {
     ref.child(widget.zipCode).once().then((DataSnapshot snap) {
       this.setState(() {
         data = snap.value;
-        if(data == null){
+        if (data == null) {
           query.artist1 = "zipcode not found in database";
-        }
-        else{
+        } else {
           query.artist1 = data["artist1"];
           query.artist2 = data["artist2"];
           query.artist3 = data["artist3"];
         }
-
       });
-
     });
-
   }
-
-
-
 }
-
