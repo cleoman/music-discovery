@@ -21,12 +21,15 @@ dependencies:
   cupertino_icons: ^0.1.2
   firebase_database: ^1.0.5
   firebase_core:
+  mockito:
+  cloud_firestore:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   image_test_utils: ^1.0.0
+  mockito:
 
 
 # For information on the generic Dart part of this file, see the

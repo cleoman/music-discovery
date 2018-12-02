@@ -33,6 +33,19 @@ void main() {
     });
   });
 
+  testWidgets('a valid zipcode', (WidgetTester tester) async {
+    provideMockedNetworkImages(() async {
+      await tester.pumpWidget(new MaterialApp(home: new App()));
+      await tester.tap(find.byType(TextField));
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byType(EditableText), "22033");
+      await tester.pumpAndSettle();
+      await tester.tap(find.text("Submit"));
+      await tester.pumpAndSettle();
+      expect(find.byType(AlertDialog), findsNothing);
+    });
+  });
+
   testWidgets('Gets to second screen', (WidgetTester tester) async {
     provideMockedNetworkImages(() async {
       await tester.pumpWidget(new MaterialApp(home: new App()));
@@ -92,4 +105,50 @@ void main() {
       expect(find.byType(ListTile), findsNWidgets(3));
     });
   });
+
+  testWidgets('Displays 3 genres for 22033', (WidgetTester tester) async {
+    provideMockedNetworkImages(() async {
+      await tester.pumpWidget(new MaterialApp(home: new App()));
+      await tester.tap(find.byType(TextField));
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byType(EditableText), "22033");
+      await tester.pumpAndSettle();
+      await tester.tap(find.text("Submit"));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text("Display Top Trending Genres"));
+      await tester.pumpAndSettle();
+      expect(find.byType(ListTile), findsNWidgets(3));
+    });
+  });
+
+  testWidgets('Displays 3 artists for 22033', (WidgetTester tester) async {
+    provideMockedNetworkImages(() async {
+      await tester.pumpWidget(new MaterialApp(home: new App()));
+      await tester.tap(find.byType(TextField));
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byType(EditableText), "22033");
+      await tester.pumpAndSettle();
+      await tester.tap(find.text("Submit"));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text("Display Top Trending Artists"));
+      await tester.pumpAndSettle();
+      expect(find.byType(ListTile), findsNWidgets(3));
+    });
+  });
+
+  testWidgets('Displays 3 songs for 22033', (WidgetTester tester) async {
+    provideMockedNetworkImages(() async {
+      await tester.pumpWidget(new MaterialApp(home: new App()));
+      await tester.tap(find.byType(TextField));
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byType(EditableText), "22033");
+      await tester.pumpAndSettle();
+      await tester.tap(find.text("Submit"));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text("Display Top Trending Songs"));
+      await tester.pumpAndSettle();
+      expect(find.byType(ListTile), findsNWidgets(3));
+    });
+  });
+
 }
