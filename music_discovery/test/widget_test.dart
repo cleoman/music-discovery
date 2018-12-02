@@ -62,4 +62,34 @@ void main() {
       expect(find.byType(ListTile), findsNWidgets(3));
     });
   });
+
+  testWidgets('Displays 3 artists', (WidgetTester tester) async {
+    provideMockedNetworkImages(() async {
+      await tester.pumpWidget(new MaterialApp(home: new App()));
+      await tester.tap(find.byType(TextField));
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byType(EditableText), "20105");
+      await tester.pumpAndSettle();
+      await tester.tap(find.text("Submit"));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text("Display Top Trending Artists"));
+      await tester.pumpAndSettle();
+      expect(find.byType(ListTile), findsNWidgets(3));
+    });
+  });
+
+  testWidgets('Displays 3 genres', (WidgetTester tester) async {
+    provideMockedNetworkImages(() async {
+      await tester.pumpWidget(new MaterialApp(home: new App()));
+      await tester.tap(find.byType(TextField));
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byType(EditableText), "20105");
+      await tester.pumpAndSettle();
+      await tester.tap(find.text("Submit"));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text("Display Top Trending Genres"));
+      await tester.pumpAndSettle();
+      expect(find.byType(ListTile), findsNWidgets(3));
+    });
+  });
 }
