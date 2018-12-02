@@ -15,8 +15,14 @@ void main() {
   testWidgets('one text field on first screen', (WidgetTester tester) async {
     provideMockedNetworkImages(() async {
       await tester.pumpWidget(new MaterialApp(home: new App()));
-
       expect(find.byType(TextField), findsOneWidget);
+    });
+  });
+
+  testWidgets('Title on first screen', (WidgetTester tester) async {
+    provideMockedNetworkImages(() async {
+      await tester.pumpWidget(new MaterialApp(home: new App()));
+      expect(find.text("Music Discovery"), findsOneWidget);
     });
   });
 
@@ -113,7 +119,7 @@ void main() {
     });
   });
 
-  testWidgets('Displays 3 songs', (WidgetTester tester) async {
+  testWidgets('Displays zip code in app bar', (WidgetTester tester) async {
     provideMockedNetworkImages(() async {
       await tester.pumpWidget(new MaterialApp(home: new App()));
       await tester.tap(find.byType(TextField));
@@ -122,40 +128,7 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.text("Submit"));
       await tester.pumpAndSettle();
-      await tester.tap(find.text("Display Top Trending Songs"));
-      await tester.pumpAndSettle();
-      expect(find.byType(ListTile), findsNWidgets(3));
-      expect(find.text(' '), findsNWidgets(3));
-    });
-  });
-
-  testWidgets('Displays 3 artists', (WidgetTester tester) async {
-    provideMockedNetworkImages(() async {
-      await tester.pumpWidget(new MaterialApp(home: new App()));
-      await tester.tap(find.byType(TextField));
-      await tester.pumpAndSettle();
-      await tester.enterText(find.byType(EditableText), "20105");
-      await tester.pumpAndSettle();
-      await tester.tap(find.text("Submit"));
-      await tester.pumpAndSettle();
-      await tester.tap(find.text("Display Top Trending Artists"));
-      await tester.pumpAndSettle();
-      expect(find.byType(ListTile), findsNWidgets(3));
-    });
-  });
-
-  testWidgets('Displays 3 genres', (WidgetTester tester) async {
-    provideMockedNetworkImages(() async {
-      await tester.pumpWidget(new MaterialApp(home: new App()));
-      await tester.tap(find.byType(TextField));
-      await tester.pumpAndSettle();
-      await tester.enterText(find.byType(EditableText), "20105");
-      await tester.pumpAndSettle();
-      await tester.tap(find.text("Submit"));
-      await tester.pumpAndSettle();
-      await tester.tap(find.text("Display Top Trending Genres"));
-      await tester.pumpAndSettle();
-      expect(find.byType(ListTile), findsNWidgets(3));
+      expect(find.text("Zipcode:20105"), findsOneWidget);
     });
   });
 
