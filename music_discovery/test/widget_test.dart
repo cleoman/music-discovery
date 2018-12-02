@@ -33,6 +33,58 @@ void main() {
     });
   });
 
+  testWidgets('reject 3 character long string', (WidgetTester tester) async {
+    provideMockedNetworkImages(() async {
+      await tester.pumpWidget(new MaterialApp(home: new App()));
+      await tester.tap(find.byType(TextField));
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byType(EditableText), "123");
+      await tester.pumpAndSettle();
+      await tester.tap(find.text("Submit"));
+      await tester.pumpAndSettle();
+      expect(find.byType(AlertDialog), findsOneWidget);
+    });
+  });
+
+  testWidgets('reject 2 character long string', (WidgetTester tester) async {
+    provideMockedNetworkImages(() async {
+      await tester.pumpWidget(new MaterialApp(home: new App()));
+      await tester.tap(find.byType(TextField));
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byType(EditableText), "12");
+      await tester.pumpAndSettle();
+      await tester.tap(find.text("Submit"));
+      await tester.pumpAndSettle();
+      expect(find.byType(AlertDialog), findsOneWidget);
+    });
+  });
+
+  testWidgets('reject 1 character long string', (WidgetTester tester) async {
+    provideMockedNetworkImages(() async {
+      await tester.pumpWidget(new MaterialApp(home: new App()));
+      await tester.tap(find.byType(TextField));
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byType(EditableText), "1");
+      await tester.pumpAndSettle();
+      await tester.tap(find.text("Submit"));
+      await tester.pumpAndSettle();
+      expect(find.byType(AlertDialog), findsOneWidget);
+    });
+  });
+
+  testWidgets('reject empty string', (WidgetTester tester) async {
+    provideMockedNetworkImages(() async {
+      await tester.pumpWidget(new MaterialApp(home: new App()));
+      await tester.tap(find.byType(TextField));
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byType(EditableText), "");
+      await tester.pumpAndSettle();
+      await tester.tap(find.text("Submit"));
+      await tester.pumpAndSettle();
+      expect(find.byType(AlertDialog), findsOneWidget);
+    });
+  });
+
   testWidgets('a valid zipcode', (WidgetTester tester) async {
     provideMockedNetworkImages(() async {
       await tester.pumpWidget(new MaterialApp(home: new App()));
@@ -73,6 +125,7 @@ void main() {
       await tester.tap(find.text("Display Top Trending Songs"));
       await tester.pumpAndSettle();
       expect(find.byType(ListTile), findsNWidgets(3));
+      expect(find.text(' '), findsNWidgets(3));
     });
   });
 
@@ -101,51 +154,6 @@ void main() {
       await tester.tap(find.text("Submit"));
       await tester.pumpAndSettle();
       await tester.tap(find.text("Display Top Trending Genres"));
-      await tester.pumpAndSettle();
-      expect(find.byType(ListTile), findsNWidgets(3));
-    });
-  });
-
-  testWidgets('Displays 3 genres for 22033', (WidgetTester tester) async {
-    provideMockedNetworkImages(() async {
-      await tester.pumpWidget(new MaterialApp(home: new App()));
-      await tester.tap(find.byType(TextField));
-      await tester.pumpAndSettle();
-      await tester.enterText(find.byType(EditableText), "22033");
-      await tester.pumpAndSettle();
-      await tester.tap(find.text("Submit"));
-      await tester.pumpAndSettle();
-      await tester.tap(find.text("Display Top Trending Genres"));
-      await tester.pumpAndSettle();
-      expect(find.byType(ListTile), findsNWidgets(3));
-    });
-  });
-
-  testWidgets('Displays 3 artists for 22033', (WidgetTester tester) async {
-    provideMockedNetworkImages(() async {
-      await tester.pumpWidget(new MaterialApp(home: new App()));
-      await tester.tap(find.byType(TextField));
-      await tester.pumpAndSettle();
-      await tester.enterText(find.byType(EditableText), "22033");
-      await tester.pumpAndSettle();
-      await tester.tap(find.text("Submit"));
-      await tester.pumpAndSettle();
-      await tester.tap(find.text("Display Top Trending Artists"));
-      await tester.pumpAndSettle();
-      expect(find.byType(ListTile), findsNWidgets(3));
-    });
-  });
-
-  testWidgets('Displays 3 songs for 22033', (WidgetTester tester) async {
-    provideMockedNetworkImages(() async {
-      await tester.pumpWidget(new MaterialApp(home: new App()));
-      await tester.tap(find.byType(TextField));
-      await tester.pumpAndSettle();
-      await tester.enterText(find.byType(EditableText), "22033");
-      await tester.pumpAndSettle();
-      await tester.tap(find.text("Submit"));
-      await tester.pumpAndSettle();
-      await tester.tap(find.text("Display Top Trending Songs"));
       await tester.pumpAndSettle();
       expect(find.byType(ListTile), findsNWidgets(3));
     });
