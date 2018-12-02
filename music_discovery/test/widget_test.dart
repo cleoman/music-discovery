@@ -6,8 +6,17 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:image_test_utils/image_test_utils.dart';
 import 'package:music_discovery/main.dart';
 
 void main() {
+  testWidgets('one text field on first screen', (WidgetTester tester) async {
+    provideMockedNetworkImages(() async {
+      await tester.pumpWidget(new App());
+
+      expect(find.byType(TextField), findsOneWidget);
+    });
+  });
 }
