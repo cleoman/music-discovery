@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:image_test_utils/image_test_utils.dart';
 import 'package:music_discovery/main.dart';
 
 void main(){
-  //checks if there are 3 ListTiles
-  testWidgets('Displays 3 genres for 20105', (WidgetTester tester) async {
+  testWidgets("Display 3 songs for 20105", (WidgetTester tester) async{
     provideMockedNetworkImages(() async {
       await tester.pumpWidget(new MaterialApp(home: new App()));
       await tester.tap(find.byType(TextField));
@@ -16,7 +13,7 @@ void main(){
       await tester.pumpAndSettle();
       await tester.tap(find.text("Submit"));
       await tester.pumpAndSettle();
-      await tester.tap(find.text("Display Top Trending Genres"));
+      await tester.tap(find.text("Display Top Trending Songs"));
       await tester.pumpAndSettle();
       expect(find.byType(ListTile), findsNWidgets(3));
     });
@@ -32,13 +29,13 @@ void main(){
       await tester.pumpAndSettle();
       await tester.tap(find.text("Submit"));
       await tester.pumpAndSettle();
-      await tester.tap(find.text("Display Top Trending Genres"));
+      await tester.tap(find.text("Display Top Trending Songs"));
       await tester.pumpAndSettle();
       expect(find.text(' '), findsNWidgets(3));
     });
   });
 
-  testWidgets('Displays 3 genres for 22033', (WidgetTester tester) async {
+  testWidgets('Displays 3 songs for 22033', (WidgetTester tester) async {
     provideMockedNetworkImages(() async {
       await tester.pumpWidget(new MaterialApp(home: new App()));
       await tester.tap(find.byType(TextField));
@@ -47,7 +44,7 @@ void main(){
       await tester.pumpAndSettle();
       await tester.tap(find.text("Submit"));
       await tester.pumpAndSettle();
-      await tester.tap(find.text("Display Top Trending Genres"));
+      await tester.tap(find.text("Display Top Trending Songs"));
       await tester.pumpAndSettle();
       expect(find.byType(ListTile), findsNWidgets(3));
     });
@@ -62,13 +59,13 @@ void main(){
       await tester.pumpAndSettle();
       await tester.tap(find.text("Submit"));
       await tester.pumpAndSettle();
-      await tester.tap(find.text("Display Top Trending Genres"));
+      await tester.tap(find.text("Display Top Trending Songs"));
       await tester.pumpAndSettle();
       expect(find.text(' '), findsNWidgets(3));
     });
   });
 
-  testWidgets('Displays 3 genres for 34523', (WidgetTester tester) async {
+  testWidgets('Displays 3 songs for 34523', (WidgetTester tester) async {
     provideMockedNetworkImages(() async {
       await tester.pumpWidget(new MaterialApp(home: new App()));
       await tester.tap(find.byType(TextField));
@@ -77,7 +74,7 @@ void main(){
       await tester.pumpAndSettle();
       await tester.tap(find.text("Submit"));
       await tester.pumpAndSettle();
-      await tester.tap(find.text("Display Top Trending Genres"));
+      await tester.tap(find.text("Display Top Trending Songs"));
       await tester.pumpAndSettle();
       expect(find.byType(ListTile), findsNWidgets(3));
     });
@@ -92,7 +89,7 @@ void main(){
       await tester.pumpAndSettle();
       await tester.tap(find.text("Submit"));
       await tester.pumpAndSettle();
-      await tester.tap(find.text("Display Top Trending Genres"));
+      await tester.tap(find.text("Display Top Trending Songs"));
       await tester.pumpAndSettle();
       expect(find.text(' '), findsNWidgets(3));
     });
