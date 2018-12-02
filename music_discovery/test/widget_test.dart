@@ -14,7 +14,7 @@ import 'package:music_discovery/main.dart';
 void main() {
   testWidgets('one text field on first screen', (WidgetTester tester) async {
     provideMockedNetworkImages(() async {
-      await tester.pumpWidget(new App());
+      await tester.pumpWidget(new MaterialApp(home: new App()));
 
       expect(find.byType(TextField), findsOneWidget);
     });
@@ -22,7 +22,7 @@ void main() {
 
   testWidgets('reject 4 character long string', (WidgetTester tester) async {
     provideMockedNetworkImages(() async {
-      await tester.pumpWidget(new App());
+      await tester.pumpWidget(new MaterialApp(home: new App()));
       await tester.tap(find.byType(TextField));
       await tester.pumpAndSettle();
       await tester.enterText(find.byType(EditableText), "0000");

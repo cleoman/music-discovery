@@ -5,8 +5,9 @@ import 'package:music_discovery/screens/songsbyzip.dart';
 //comment
 
 void main() {
-  runApp(new App());
+  runApp(new MaterialApp(home: new App()));
 }
+
 
 class App extends StatelessWidget {
   @override
